@@ -15,7 +15,7 @@ load_dotenv(find_dotenv()) #загрузить переменную окруже
 bot = Bot(token=os.getenv('TOKEN'))
 dp = Dispatcher() #отлавливает обновления
 
-bot.my_admins_list = [5540384350]
+bot.my_admins_list = []
 
 dp.include_router(user_private_router)
 dp.include_router(admin_router)
@@ -31,5 +31,6 @@ dp.include_router(admin_router_5)
 async def main():
     await bot.delete_webhook(drop_pending_updates=True) #сбрасывает ожидающие обновленя
     await dp.start_polling(bot,allowed_updates=['message, edited_updates, callback_query'])
+
 
 asyncio.run(main())
